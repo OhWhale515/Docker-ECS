@@ -1,0 +1,28 @@
+{
+    "family": "random-string-to-s3-task",
+    "taskRoleArn": "arn:aws:iam::558725381699:role/ecsTaskExecutionRole",
+    "executionRoleArn": "arn:aws:iam::558725381699:role/ecsTaskExecutionRole",
+    "containerDefinitions": [
+      {
+        "name": "random-string-to-s3",
+        "image": "558725381699.dkr.ecr.us-east-1.amazonaws.com/random-string-to-s3:latest",
+        "environment": [
+          {
+            "name": "BUCKET_NAME",
+            "value": "sgreen515-s3-demo"
+          }
+        ],
+        "logConfiguration": {
+          "logDriver": "awslogs",
+          "options": {
+            "awslogs-group": "/ecs/random-string-to-s3-task",
+            "awslogs-region": "us-east-1",
+            "awslogs-stream-prefix": "ecs"
+          }
+        },
+        "memoryReservation": 128
+      }
+    ],
+    "networkMode": "awsvpc"
+  }
+  
